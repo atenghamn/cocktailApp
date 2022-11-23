@@ -1,7 +1,7 @@
 import {useState} from "react";
-import {StyleSheet, Keyboard, Pressable, Text, TextInput, View} from "react-native";
-import Coktail from "../entities/Coktail";
-import {findAll, insert} from "../util/db";
+import {StyleSheet, Keyboard, Pressable, Text, TextInput, View, ScrollView} from "react-native";
+import Cocktail from "../../entities/Cocktail";
+import {findAll, insert} from "../../util/db";
 
 const CocktailInput = ({ cocktailList, setCocktailList }) => {
 
@@ -60,14 +60,16 @@ const CocktailInput = ({ cocktailList, setCocktailList }) => {
     const addItem = async () => {
         Keyboard.dismiss();
         const id = generateId(cocktailList)
-        await insert(new Coktail(id, titleText, glassText, instructions, ingredient1, ingredient2, ingredient3, ingredient4,
+        await insert(new Cocktail(id, titleText, glassText, instructions, ingredient1, ingredient2, ingredient3, ingredient4,
             ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10, measure1, measure2, measure3, measure4,
             measure5, measure6, measure7, measure8, measure9, measure10));
         const res = await findAll();
+        console.log(res)
         setCocktailList(res);
 
     }
     return(
+        <ScrollView>
         <View style={styles.container}>
             <TextInput
                 style={styles.textInput}
@@ -215,6 +217,7 @@ const CocktailInput = ({ cocktailList, setCocktailList }) => {
             </Pressable>
 
         </View>
+            </ScrollView>
     )
 }
 
@@ -223,6 +226,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         alignItems: 'center',
+        marginBottom: 150
     },
     textInput: {
         backgroundColor: '#FFF',

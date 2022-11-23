@@ -1,4 +1,4 @@
-    export default class Coktail {
+    export default class Cocktail {
     constructor(id,
                 title,
                 glass,

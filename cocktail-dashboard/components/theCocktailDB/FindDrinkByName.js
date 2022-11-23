@@ -1,28 +1,25 @@
-import {StyleSheet, Pressable, Text, TextInput, View} from "react-native";
+import {Pressable, Text, TextInput, View, StyleSheet} from "react-native";
 import {useState} from "react";
-import {findAll, findById} from "../util/db";
 
-
-const CocktailFinder = ({ setCocktailList }) => {
-
-    const [id, setId] = useState(0)
-    const handleChangedId = text => setId(text);
-    const searchWithId = async () => {
-        const res = !id ? await findAll() :  await findById(id)
-        setCocktailList(res)
+const FindDrinkByName = ({ setDrinklist, findByName }) => {
+    const [drinkName, setDrinkName] = useState("");
+    const handleChangedName = text => setDrinkName(text);
+    const searchWithName = async () => {
+       const res = findByName(drinkName)
+       setDrinklist(res) ;
     }
 
     return (
-        <View style={styles.container}>
+        <View>
             <TextInput
                 style={styles.textInput}
-                placeholder="Find by id"
-                value={id}
-                onChangeText={handleChangedId}
-            />
+                placeholder = "Find drink by name"
+                value = {drinkName}
+                onChangeText={handleChangedName}
+                />
             <Pressable
                 style={styles.searchButton}
-                onPress={searchWithId}
+                onPress={searchWithName}
             >
                 <Text>SEARCH</Text>
             </Pressable>
@@ -31,7 +28,7 @@ const CocktailFinder = ({ setCocktailList }) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
+     container: {
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -49,5 +46,4 @@ const styles = StyleSheet.create({
         borderRadius: 5
     }
 })
-
-export default CocktailFinder;
+export default FindDrinkByName;

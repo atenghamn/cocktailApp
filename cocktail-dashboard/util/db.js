@@ -1,5 +1,5 @@
 import * as SQLite from 'expo-sqlite'
-import Coktail from "../entities/Coktail";
+import Cocktail from "../entities/Cocktail";
 
 const db = SQLite.openDatabase('cocktails.db');
 
@@ -58,7 +58,7 @@ export const findAll = () => {
             transaction.executeSql(
                 `SELECT * FROM cocktail`, [],
 
-                (_, res) => resolve(res.rows._array.map(row => new Coktail(
+                (_, res) => resolve(res.rows._array.map(row => new Cocktail(
                     row.id, row.title, row.glass, row.instructions, row.ingredient1, row.ingredient2, row.ingredient3,
                 row.ingredient4, row.ingredient5, row.ingredient6, row.ingredient7, row.ingredient8, row.ingredient9, row.ingredient10,
                 row.measure1, row.measure2, row.measure3, row.measure4, row.measure5, row.measure6, row.measure7, row.measure8, row.measure9, row.measure10))),
@@ -188,7 +188,7 @@ export const findById = (id) => {
         db.transaction(transaction => {
             transaction.executeSql(
                 'SELECT * FROM cocktail WHERE id = ?', [id],
-                   (_, res) => resolve(res.rows._array.map(row => new Coktail(
+                   (_, res) => resolve(res.rows._array.map(row => new Cocktail(
                     row.id, row.title, row.glass, row.instructions, row.ingredient1, row.ingredient2, row.ingredient3,
                 row.ingredient4, row.ingredient5, row.ingredient6, row.ingredient7, row.ingredient8, row.ingredient9, row.ingredient10,
                 row.measure1, row.measure2, row.measure3, row.measure4, row.measure5, row.measure6, row.measure7, row.measure8, row.measure9, row.measure10))),

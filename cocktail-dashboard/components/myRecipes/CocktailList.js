@@ -1,5 +1,5 @@
-import {deleteById, findAll} from "../util/db";
-import {StyleSheet, FlatList, Pressable, Text, View} from "react-native";
+import {deleteById, findAll} from "../../util/db";
+import {StyleSheet, FlatList, Pressable, Text, ScrollView, View} from "react-native";
 
 
 const CocktailList = ({cocktailList, setCocktailList}) => {
@@ -9,13 +9,12 @@ const CocktailList = ({cocktailList, setCocktailList}) => {
         const res = await findAll()
         setCocktailList(res);
     }
-
-    const _renderCocktail = ({item : cocktail}) => {
+    const _renderCocktail = ({item : item}) => {
         return (
             <View>
-                <Text style={styles.text}>{cocktail.title}</Text>
+                <Text style={item.text}>{item.title}</Text>
                 <Pressable
-                    onPress={() => removeCocktail(cocktail.id)}
+                    onPress={() => removeCocktail(item.id)}
                 >
                     <Text style={styles.text}>Remove</Text>
                 </Pressable>
@@ -24,9 +23,13 @@ const CocktailList = ({cocktailList, setCocktailList}) => {
     }
 
     return (
-        <View style={styles.container}>
-            <FlatList data={cocktailList} renderItem={_renderCocktail} />
-        </View>
+            <View style={styles.container}>
+                <FlatList
+                    style={styles.list}
+                    data={cocktailList}
+                    renderItem={_renderCocktail}
+                />
+            </View>
     )
 }
 
@@ -41,7 +44,10 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 25,
         width: '60%',
-        borderRadius: 5
+        borderRadius: 5,
+    },
+    list: {
+        flex: 1,
     }
 });
 
