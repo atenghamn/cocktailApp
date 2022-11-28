@@ -34,7 +34,6 @@ const MyRecipes = () => {
     }
     return (
         <View style={styles.container}>
-            <Text>My Reciepes</Text>
             <CocktailFinder setCocktailList={setCocktailList} />
             <CocktailList setCocktailList={setCocktailList} cocktailList={cocktailList} />
             <CocktailInput setCocktailList={setCocktailList} cocktailList={cocktailList} />

@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import RecipesScreen from "./screens/RecipesScreen";
@@ -15,6 +13,7 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator
             screenOptions={({ route }) => ({
+                headerShown: false,
                 tabBarIcon: ({ color, size }) => {
                     let iconName;
 
@@ -35,12 +34,3 @@ export default function App() {
       </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

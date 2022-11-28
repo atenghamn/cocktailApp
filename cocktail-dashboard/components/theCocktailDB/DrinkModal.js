@@ -14,12 +14,12 @@ const DrinkModal = ({ item }) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Image
+                 {/*       <Image
                             styles={styles.thumbNail}
                             source={{
                                 uri: 'https://www.thecocktaildb.com/images/media/drink/709s6m1613655124.jpg',
                             }}
-                        />
+                        />*/}
                         <Text>{item.strDrink}</Text>
                         <Text>{item.strCategory}</Text>
                         <Text>{item.strGlass}</Text>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     button: {
-        borderRadius: 20,
+        borderRadius: 10,
         padding: 10,
         elevation: 2
     },

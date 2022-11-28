@@ -1,14 +1,18 @@
 import {Pressable, Text, TextInput, View, StyleSheet} from "react-native";
 import {useState} from "react";
 import DrinklistService from "../../services/drinklist-service";
+import {useNavigation} from "@react-navigation/native";
 
-const FindDrinkByName = ({ setDrinklist }) => {
+const FindDrinkByName = ({ drinklist, setDrinklist }) => {
+    const nav = useNavigation()
     const [drinkName, setDrinkName] = useState("");
     const handleChangedName = text => setDrinkName(text);
     const searchWithName = () => {
 
         DrinklistService.getByName(drinkName).then(fetchedData => {
             setDrinklist(fetchedData)
+            console.log(drinklist)
+            nav.navigate('presentResultScreen', {drinklist : drinklist})
         })
     }
 

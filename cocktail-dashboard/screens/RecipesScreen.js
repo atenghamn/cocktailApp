@@ -1,40 +1,19 @@
-import {View, Text, StyleSheet} from "react-native"
-import {useState} from "react";
-import FindDrinkByName from "../components/theCocktailDB/FindDrinkByName";
-import FindByIngridient from "../components/theCocktailDB/FindByIngridient";
-import DrinkList from "../components/theCocktailDB/DrinkList";
-import GetRandomDrink from "../components/theCocktailDB/GetRandomDrink";
-import IngredientList from "../components/theCocktailDB/IngredientList";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import SearchScreen from "./SearchScreen";
+import PresentResultScreen from "./PresentResultScreen";
 
 const RecipesScreen = () => {
-    const [drinklist, setDrinklist] = useState([]);
-    const [ingredientlist, setIngredientlist] = useState([]);
+    const Stack = createNativeStackNavigator();
 
     return (
-        <View style={styles.container}>
-{/*            <FindDrinkByName setDrinklist={setDrinklist}  />
-            <FindByIngridient setIngredientlist={setIngredientlist}  />
-            <GetRandomDrink setDrinkList={setDrinklist}  />*/}
-            {drinklist !== undefined &&
-                <DrinkList style={styles.drinklist} drinklist={drinklist}/>
-            }
-           {/* {ingredientlist !== undefined &&
-                <IngredientList style={styles.drinklist} ingredientlist={ingredientlist} />
-            }*/}
-        </View>
+
+        <Stack.Navigator
+        screenOptions={{headerShown: false}}>
+            <Stack.Screen name='searchScreen' component={SearchScreen} />
+            <Stack.Screen name='presentResultScreen' component={PresentResultScreen} />
+        </Stack.Navigator>
+
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    drinklist: {
-        backgroundColor: "golden"
-    }
-});
 
 export default RecipesScreen;

@@ -13,7 +13,7 @@ const CocktailList = ({cocktailList, setCocktailList}) => {
     const _renderCocktail = ({item : item}) => {
         return (
             <View>
-                <Text style={item.text}>{item.title}</Text>
+
                 <CocktailModal item={item} />
                 <Pressable
                     onPress={() => removeCocktail(item.id)}

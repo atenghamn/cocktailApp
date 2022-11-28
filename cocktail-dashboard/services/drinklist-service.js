@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URL = "http://10.0.2.2:8080/api/drink/"
 
 const getByName = (name) => {
-    console.log("Anrop görs med: ", name)
     return axios
         .get(API_URL + name)
         .then((response) => {
@@ -12,7 +11,6 @@ const getByName = (name) => {
 }
 
 const getByIngridient = (name) => {
-    console.log("Anrop görs med: ", name)
     return axios
         .get(API_URL + `ingridient/`+ name)
         .then((response) => {

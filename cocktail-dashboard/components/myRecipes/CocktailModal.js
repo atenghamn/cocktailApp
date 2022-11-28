@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Modal, View, StyleSheet} from "react-native";
+import {Modal, View, StyleSheet, Text, Pressable} from "react-native";
 
 const CocktailModal = ({ item }) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -26,10 +26,21 @@ const CocktailModal = ({ item }) => {
                          <Text>{item.measure8} {item.ingredient8}</Text>
                          <Text>{item.measure9} {item.ingredient9}</Text>
                          <Text>{item.measure10} {item.ingredient10}</Text>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                        >
+                            <Text style={styles.textStyle}>CLOSE</Text>
+                        </Pressable>
                     </View>
                 </View>
-
             </Modal>
+            <Pressable
+                style={[styles.buttonOpen, styles.button]}
+                onPress={() => setModalVisible(true)}
+            >
+                <Text style={styles.textStyle}>{item.title}</Text>
+            </Pressable>
         </View>
     )
 }
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     button: {
-        borderRadius: 20,
+        borderRadius: 10,
         padding: 10,
         elevation: 2
     },

@@ -1,4 +1,5 @@
 import {FlatList, StyleSheet, Text, View} from "react-native";
+import IngredientModal from "./IngredientModal";
 
 
 const IngredientList = ({ ingredientlist }) => {
@@ -6,14 +7,13 @@ const IngredientList = ({ ingredientlist }) => {
     const _renderIngredientList = ({ item : item}) => {
         return(
             <View style={styles.container}>
-                <Text>{item.strIngredient}</Text>
+                <IngredientModal item={item}/>
             </View>
         )
     }
 
     return (
         <View style={styles.container}>
-        <Text>Ingredient list</Text>
             <FlatList data={ingredientlist.ingredients} renderItem={_renderIngredientList} />
         </View>
     )
