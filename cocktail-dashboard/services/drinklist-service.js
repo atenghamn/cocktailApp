@@ -1,7 +1,9 @@
 import axios from "axios";
-const API_URL = process.env.REACT_APP_API_URL;
+//const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "http://10.0.2.2:8080/api/drink/"
 
 const getByName = (name) => {
+    console.log("Anrop görs med: ", name)
     return axios
         .get(API_URL + name)
         .then((response) => {
@@ -10,6 +12,7 @@ const getByName = (name) => {
 }
 
 const getByIngridient = (name) => {
+    console.log("Anrop görs med: ", name)
     return axios
         .get(API_URL + `ingridient/`+ name)
         .then((response) => {
@@ -17,15 +20,28 @@ const getByIngridient = (name) => {
         })
 }
 
-const getRandom = () => {
-    return axios
+const getRandom =  () => {
+    return  axios
         .get(API_URL)
         .then((response) => {
-            return response.data;
+           const res = response.data
+            console.log("Responsen från servicen ", res)
+            return res;
+        })
+        .catch((error) => {
+            if(error.response) {
+                console.log("Response data ", error.response.data)
+                console.log("Response status ", error.response.status)
+                console.log("Responnse header ", error.response.headers)
+            } else if (error.request){
+                console.log("2")
+                console.log(error.request)
+            } else {
+                console.log("3")
+                console.log(error.message)
+            }
         })
 }
-
-
 
 const DrinklistService = {
     getByName,

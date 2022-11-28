@@ -1,5 +1,6 @@
 import {deleteById, findAll} from "../../util/db";
 import {StyleSheet, FlatList, Pressable, Text, ScrollView, View} from "react-native";
+import CocktailModal from "./CocktailModal";
 
 
 const CocktailList = ({cocktailList, setCocktailList}) => {
@@ -13,6 +14,7 @@ const CocktailList = ({cocktailList, setCocktailList}) => {
         return (
             <View>
                 <Text style={item.text}>{item.title}</Text>
+                <CocktailModal item={item} />
                 <Pressable
                     onPress={() => removeCocktail(item.id)}
                 >

@@ -1,16 +1,17 @@
 import {FlatList, Text, View, StyleSheet} from "react-native";
+import DrinkModal from "./DrinkModal";
 
-const DrinkList = ({ drinkList }) => {
- const _renderDrinkList = ({item: item}) => {
+const DrinkList = ({ drinklist }) => {
+ const _renderDrinkList = ({item : item}) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{item.title}</Text>
+            <DrinkModal item={item}/>
         </View>
     )
  }
     return (
         <View style={styles.container}>
-            <FlatList data={drinkList} renderItem={_renderDrinkList} />
+            <FlatList data={drinklist.drinks} renderItem={_renderDrinkList} />
         </View>
     )
 }

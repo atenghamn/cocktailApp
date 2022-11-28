@@ -1,20 +1,24 @@
 import {Pressable, Text, TextInput, View, StyleSheet} from "react-native";
 import {useState} from "react";
+import DrinklistService from "../../services/drinklist-service";
 
-const FindByIngridient = ({ setDrinklist, findByIngridient }) => {
+const FindByIngridient = ({ setIngredientlist }) => {
 
     const [ingridient, setIngridient] = useState("");
     const handleChangedIngridient = text => setIngridient(text);
     const searchWithIngridient = async () => {
-       const res = findByIngridient(ingridient)
-       setDrinklist(res) ;
+
+        DrinklistService.getByIngridient(ingridient).then(fetchedData => {
+            console.log(fetchedData)
+            setIngredientlist(fetchedData);
+        })
     }
 
     return (
         <View>
             <TextInput
                 style={styles.textInput}
-                placeholder = "Find drink by name"
+                placeholder = "Find drink by ingridient"
                 value = {ingridient}
                 onChangeText={handleChangedIngridient}
                 />

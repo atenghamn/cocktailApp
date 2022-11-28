@@ -1,12 +1,15 @@
 import {Pressable, Text, TextInput, View, StyleSheet} from "react-native";
 import {useState} from "react";
+import DrinklistService from "../../services/drinklist-service";
 
-const FindDrinkByName = ({ setDrinklist, findByName }) => {
+const FindDrinkByName = ({ setDrinklist }) => {
     const [drinkName, setDrinkName] = useState("");
     const handleChangedName = text => setDrinkName(text);
-    const searchWithName = async () => {
-       const res = findByName(drinkName)
-       setDrinklist(res) ;
+    const searchWithName = () => {
+
+        DrinklistService.getByName(drinkName).then(fetchedData => {
+            setDrinklist(fetchedData)
+        })
     }
 
     return (
