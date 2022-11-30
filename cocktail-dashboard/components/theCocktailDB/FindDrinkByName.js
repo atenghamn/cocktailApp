@@ -11,7 +11,7 @@ const FindDrinkByName = ({ drinklist, setDrinklist }) => {
 
         DrinklistService.getByName(drinkName).then(fetchedData => {
             setDrinklist(fetchedData)
-            console.log("inne från FindDrinkByName: ", drinklist)
+            setDrinkName("")
             nav.navigate('presentResultScreen', { drinklist, })
         })
     }

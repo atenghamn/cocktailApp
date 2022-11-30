@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginTop: 40
     },
     textInput: {
         backgroundColor: '#FFF',

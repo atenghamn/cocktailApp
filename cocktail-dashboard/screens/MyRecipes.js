@@ -2,8 +2,8 @@ import {View, Text, StyleSheet} from "react-native";
 import {useEffect, useState} from "react";
 import {findAll, getTableInfo, initDB} from "../util/db";
 import CocktailFinder from "../components/myRecipes/CocktailFinder";
-import CocktailInput from "../components/myRecipes/CocktailInput";
 import CocktailList from "../components/myRecipes/CocktailList";
+import InputModal from "../components/myRecipes/InputModal";
 
 const MyRecipes = () => {
 
@@ -36,12 +36,10 @@ const MyRecipes = () => {
         <View style={styles.container}>
             <CocktailFinder setCocktailList={setCocktailList} />
             <CocktailList setCocktailList={setCocktailList} cocktailList={cocktailList} />
-            <CocktailInput setCocktailList={setCocktailList} cocktailList={cocktailList} />
-
+            <InputModal cocktaillist={cocktailList} setCocktaillist={setCocktailList} />
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {

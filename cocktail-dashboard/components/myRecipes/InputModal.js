@@ -1,46 +1,38 @@
 import {useState} from "react";
-import {Modal, View, StyleSheet, Text, Pressable, Alert, Image} from "react-native";
+import {Modal, Pressable, Text, StyleSheet, View} from "react-native";
+import CocktailInput from "./CocktailInput";
 
-const DrinkModal = ({ item }) => {
-    const [modalVisible, setModalVisible] = useState(false)
+const InputModal = ({ cocktaillist, setCocktaillist })  => {
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <View style={styles.centeredView}>
             <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {setModalVisible(!modalVisible)}}
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {setModalVisible(!modalVisible)}}
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text>{item.strDrink}</Text>
-                        <Text>{item.strCategory}</Text>
-                        <Text>{item.strGlass}</Text>
-                        <Text>{item.strMeasure1}{item.strIngredient1}</Text>
-                        <Text>{item.strMeasure2}{item.strIngredient2}</Text>
-                        <Text>{item.strMeasure3}{item.strIngredient3}</Text>
-                        <Text>{item.strMeasure4}{item.strIngredient4}</Text>
-                        <Text>{item.strMeasure5}{item.strIngredient5}</Text>
-                        <Text>{item.strMeasure6}{item.strIngredient6}</Text>
-                        <Text>{item.strMeasure7}{item.strIngredient7}</Text>
-                        <Text>{item.strInstructions}</Text>
+                        <CocktailInput cocktailList={cocktaillist} setCocktailList={setCocktaillist}/>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setModalVisible(!modalVisible)}
-                            >
+                        >
                             <Text style={styles.textStyle}>CLOSE</Text>
                         </Pressable>
                     </View>
                 </View>
             </Modal>
             <Pressable
-                style={[styles.buttonOpen, styles.button]}
+                style={[styles.button, styles.buttonOpen]}
                 onPress={() => setModalVisible(true)}
-                >
-                <Text style={styles.textStyle}>{item.strDrink}</Text>
+            >
+                <Text>NEW COCKTAIL</Text>
             </Pressable>
         </View>
+
     )
 }
 
@@ -92,4 +84,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default DrinkModal;
+export default InputModal;

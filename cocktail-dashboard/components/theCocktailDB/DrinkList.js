@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 100
+        justifyContent: 'space-around',
+        marginTop: 100,
     },
     text: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFFF',
         padding: 10,
         margin: 25,
         width: '60%',
