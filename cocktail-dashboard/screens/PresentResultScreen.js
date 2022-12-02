@@ -7,7 +7,6 @@ const PresentResultScreen = ({navigation: {goBack}}) => {
     const route = useRoute();
     const [drinklist, setDrinklist] = useState(route.params.drinklist)
 
-    console.log("Inne från presentResultScreen: ", drinklist)
     return (
         <View style={styles.container}>
            <Pressable

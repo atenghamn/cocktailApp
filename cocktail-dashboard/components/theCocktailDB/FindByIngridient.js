@@ -1,16 +1,19 @@
 import {Pressable, Text, TextInput, View, StyleSheet} from "react-native";
 import {useState} from "react";
 import DrinklistService from "../../services/drinklist-service";
+import {useNavigation} from "@react-navigation/native";
 
-const FindByIngridient = ({ setIngredientlist }) => {
+const FindByIngridient = ({ ingridientlist, setIngredientlist }) => {
 
+    const nav = useNavigation();
     const [ingridient, setIngridient] = useState("");
     const handleChangedIngridient = text => setIngridient(text);
     const searchWithIngridient = async () => {
 
         DrinklistService.getByIngridient(ingridient).then(fetchedData => {
-            console.log(fetchedData)
             setIngredientlist(fetchedData);
+            setIngridient("");
+            nav.navigate('presentIngredientScreen', { ingridientlist, })
         })
     }
 

@@ -1,21 +1,27 @@
-import {Pressable, StyleSheet, Text} from "react-native";
+import {Pressable, StyleSheet, Text, View} from "react-native";
 import DrinklistService from "../../services/drinklist-service";
 
-const GetRandomDrink = ({ setDrinkList, getRandomDrink }) => {
+import {useNavigation} from "@react-navigation/native";
 
+const GetRandomDrink = ({ setDrinkList, drinklist }) => {
+    const nav = useNavigation();
     const findRandomDrink = () => {
         DrinklistService.getRandom().then(fetchedData => {
             setDrinkList(fetchedData)
+            nav.navigate('presentResultScreen', { drinklist, })
         })
     }
 
     return (
-        <Pressable
-            style={styles.searchButton}
-            onPress={findRandomDrink}
-        >
-            <Text>FIND ME A DRINK</Text>
-        </Pressable>
+        <View>
+            <Pressable
+                style={styles.searchButton}
+                onPress={findRandomDrink}
+            >
+                <Text>FIND ME A DRINK</Text>
+            </Pressable>
+
+        </View>
     )
 }
 

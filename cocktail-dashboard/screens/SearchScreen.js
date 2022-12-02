@@ -12,7 +12,7 @@ const SearchScreen = () => {
         <View style={styles.container}>
             <FindDrinkByName setDrinklist={setDrinklist} drinklist={drinklist} />
             <FindByIngridient setIngredientlist={setIngredientlist} ingridientlist={ingredientlist}  />
-            <GetRandomDrink setDrinkList={setDrinklist}  />
+            <GetRandomDrink setDrinkList={setDrinklist} drinklist={drinklist} />
         </View>
     )
 }
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
     },
     drinklist: {
         backgroundColor: "golden"
